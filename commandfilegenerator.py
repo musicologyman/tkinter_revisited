@@ -26,7 +26,7 @@ def row_to_excerpt(row):
 def make_ffmpeg_command(excerpt, filename=None):
     FILENAME = '"filename"'
     return f'ffmpeg -i "{filename if filename else FILENAME}" ' \
-           f'-ss {excerpt.start:.3f} -t {excerpt.duration:.3f} -vn ' \
+           f'-ss {excerpt.start:.3f} -t {excerpt.duration:.3f} -vcodec copy ' \
            f'-acodec copy "{excerpt.label}.mp4"'
     
 def write_ffmpeg_command_file(output_file: Path, ffmpeg_commands): 

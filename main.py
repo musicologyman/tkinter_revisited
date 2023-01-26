@@ -1,5 +1,6 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+import tkinter.messagebox
 
 from pathlib import Path
 from tkinter import filedialog
@@ -110,7 +111,8 @@ class FileSelectionUI():
         media_file = Path(self.var_media_file.get())
         script_file = Path(self.var_script_file.get())
         generate_script_file(labels_file, media_file, script_file)        
-
+        tkinter.messagebox.showinfo(title='Create ffmpeg script', 
+                                    message='Done!')
         
 def main():
     ui = FileSelectionUI()
