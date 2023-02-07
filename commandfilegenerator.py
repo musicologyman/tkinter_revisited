@@ -36,7 +36,7 @@ def write_ffmpeg_command_file(output_file: Path, ffmpeg_commands):
     
 def generate_script_file(label_file: Path, media_file: Path, output_file: Path):
     rows = read_label_file(label_file)
-    excerpts = [row_to_excerpt(row) for row in rows]
+    excerpts = [row_to_excerpt(row) for row in rows if row]
     make_ffmpeg_command_2 = \
         partial(make_ffmpeg_command, filename=media_file)
 
@@ -54,7 +54,7 @@ def setup_command_line():
 def main():
     command_line_args = setup_command_line()
     rows = read_label_file(command_line_args.label_file)
-    excerpts = [row_to_excerpt(row) for row in rows]
+    excerpts = [row_to_excerpt(row) for row in rows if row]
     make_ffmpeg_command_2 = \
         partial(make_ffmpeg_command, filename=command_line_args.media_file)
 
